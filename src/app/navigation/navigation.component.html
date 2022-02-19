@@ -10,14 +10,10 @@
         <span>Games</span>
       </a>
       <a mat-list-item routerLinkActive="item-active" routerLink="add-game">
-        <mat-icon aria-label="Side nav add game icon">add_circle</mat-icon>
+        <mat-icon aria-label="Side nav add game icon">videogame_asset</mat-icon>
         <span>Add game</span>
       </a>
       <mat-divider></mat-divider>
-      <a mat-list-item href="#">
-        <mat-icon aria-label="Side nav login icon">login</mat-icon>
-        <span>Login</span>
-      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -30,8 +26,10 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <mat-icon aria-label="Toolbar app icon">smart_toy</mat-icon>
+      <mat-icon aria-label="Toolbar app icon">sports_esports</mat-icon>
       <span>gameLibrary</span>
+      <span class="spacer"></span>
+      <app-auth-nav></app-auth-nav>
     </mat-toolbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer>

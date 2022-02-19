@@ -51,3 +51,7 @@ mat-toolbar > button mat-icon:not(:hover) {
 .item-active .mat-icon {
   color: #2980b9;
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
