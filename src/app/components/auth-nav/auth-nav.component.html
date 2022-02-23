@@ -2,8 +2,9 @@
   <button
     mat-icon-button
     aria-label="logout button"
-    (click)="auth.logout({ returnTo: document.location.origin })"
-  >
+    matTooltip="logout"
+    matTooltipClass="tooltip-login-logout"
+    (click)="auth.logout({ returnTo: document.location.origin })">
     <mat-icon>logout</mat-icon>
   </button>
 </ng-container>
@@ -12,8 +13,9 @@
   <button
     mat-icon-button
     aria-label="login button"
-    (click)="auth.loginWithRedirect()"
-  >
+    matTooltip="login"
+    matTooltipClass="tooltip-login-logout"
+    (click)="auth.loginWithRedirect()">
     <mat-icon>login</mat-icon>    
   </button>
 </ng-template>

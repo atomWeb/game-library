@@ -38,6 +38,7 @@ testem.log
 /typings
 
 auth_config.json
+api_config.json
 
 # System files
 .DS_Store

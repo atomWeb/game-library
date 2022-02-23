@@ -18,21 +18,21 @@
 
 mat-toolbar > mat-icon {
   transform: scale(2.1);
-  margin: 0em 0.7em 0em 0.5em;
+  margin: 0em 0.7em 0em 0.9em;
 }
 
 mat-toolbar > button mat-icon:hover {
-  transition: transform 0.2s ease;
-  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  transform: scale(1.4);
 }
 
 mat-toolbar > button mat-icon:not(:hover) {
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .mat-nav-list .mat-icon {
   color: #696969;
-  transform: scale(1.2);
+  transform: scale(1.4);
 }
 
 .mat-nav-list span {

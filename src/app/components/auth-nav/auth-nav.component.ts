@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
@@ -12,8 +12,12 @@ import { DOCUMENT } from '@angular/common';
         margin: -0.2em 0.9em 0em 0.4em;
         cursor: pointer;
       }
+      .tooltip-login-logout {
+        font-size: 1.1em;
+      }
     `,
   ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AuthNavComponent implements OnInit {
   profileJson: string = '';

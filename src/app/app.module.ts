@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from '@auth0/auth0-angular'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -10,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -18,6 +21,10 @@ import { GamesComponent } from './pages/games/games.component';
 import { AddGameComponent } from './pages/add-game/add-game.component';
 import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 import { environment } from '../environments/environment';
+import { GameComponent } from './components/game/game.component';
+import { GameListComponent } from './components/game-list/game-list.component';
+
+import { JwtInterceptor } from './shared/jwt.iterceptor';
 
 @NgModule({
   declarations: [
@@ -26,23 +33,30 @@ import { environment } from '../environments/environment';
     FooterComponent,
     GamesComponent,
     AddGameComponent,
-    AuthNavComponent
+    AuthNavComponent,
+    GameComponent,
+    GameListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatTooltipModule,
+    MatTabsModule,
     AuthModule.forRoot({
       ...environment.auth,
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
