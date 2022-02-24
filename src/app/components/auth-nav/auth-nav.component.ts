@@ -28,17 +28,14 @@ export class AuthNavComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.auth.user$.subscribe((profile) => {
-      this.profileJson = JSON.stringify(profile, null, 2);
-      console.log('dsds', this.profileJson);
-    });
-    this.auth.idTokenClaims$.subscribe((claims) => {
-      // console.log(claims)
-      const rawToken = claims?.__raw;
-      console.log(rawToken);
-    });
-    // if (this.auth.isAuthenticated$) {
-    //     this.auth.getAccessTokenSilently().subscribe((z) => console.log(z));
-    // }
+    // this.auth.user$.subscribe((profile) => {
+    //   this.profileJson = JSON.stringify(profile, null, 2);
+    //   console.log('dsds', this.profileJson);
+    // });
+    // this.auth.idTokenClaims$.subscribe((claims) => {
+    //   // console.log(claims)
+    //   const rawToken = claims?.__raw;
+    //   console.log(rawToken);
+    // });
   }
 }

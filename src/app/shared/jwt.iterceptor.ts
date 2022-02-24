@@ -9,6 +9,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { AuthService } from '@auth0/auth0-angular';
 
 // import { SpinnerService } from '../services/spinner.service';
 // import { AuthService } from '../services/auth.service';
@@ -18,10 +19,11 @@ import { finalize, catchError } from 'rxjs/operators';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
   count = 0;
+  token?: string;
 
   constructor(
     // private loader: SpinnerService,
-    // private authService: AuthService,
+    private auth0: AuthService,
     private router: Router
   ) {}
 
@@ -32,17 +34,31 @@ export class JwtInterceptor implements HttpInterceptor {
     // this.loader.show();
     this.count++;
     // const isApiUrl = request.url.startsWith(environment.apiUrl);
-    const token = localStorage.getItem('auth-token');
+    // const token = localStorage.getItem('auth-token');
+    this.auth0.idTokenClaims$.subscribe((claims) => {
+      this.token = claims?.__raw;
+      console.log(this.token);
+    });
 
     const authReq = request.clone({
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `${token}`,        
-        'Accept': '*/*'
+        'Authorization': `${this.token}`,
+        'Accept': '*/*',
       }),
     });
-    console.log('Intercepted HTTP call', authReq);
-    return next.handle(authReq);
+
+    // console.log('Intercepted HTTP call', authReq);
+
+    return next.handle(authReq).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          // this.router.navigateByUrl('/login');
+        }
+
+        return throwError(() => new Error('err'));
+      })
+    );
     // // if (token && isApiUrl) {
     // request = request.clone({
     //   setHeaders: {
