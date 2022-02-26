@@ -1,1 +1,81 @@
-<p>add-game works!</p>
+<mat-card class="addGameCard">
+  <mat-card-header>
+    <mat-card-title>Add game.</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="register-form data-form" [formGroup]="addGameForm" (ngSubmit)="onSubmit()">
+      <image-uploader
+        formControlName="gameImage"
+        requiredFileType="image/jpeg, image/png"
+        (image64Encoded)="image64 = $event">
+      </image-uploader>
+
+      <mat-form-field>
+        <mat-select formControlName="platform" placeholder="Select game platform">
+          <mat-option *ngFor="let platform of platforms" [value]="platform.code">
+            {{ platform.desc }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input 
+            matInput formControlName="boughtAt" 
+            placeholder="Purchase date"
+            [matDatepicker]="boughtAtPicker"/>
+        
+        <mat-datepicker-toggle matSuffix [for]="boughtAtPicker">
+        </mat-datepicker-toggle>
+        <mat-datepicker #boughtAtPicker>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          name="gameName"
+          placeholder="Game name"
+          formControlName="gameName"
+          #gameName/>
+        <mat-hint align="end"> {{ gameName.value.length }} / 60 </mat-hint>
+        <mat-error
+          *ngIf="addGameForm.controls['gameName'].errors?.['required']">
+          Game name mandatory.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <textarea
+          matInput placeholder="Game description" 
+          formControlName="description"
+          cdkTextareaAutosize [cdkAutosizeMinRows]="2"
+          [cdkAutosizeMaxRows]="3">
+        </textarea>
+      </mat-form-field>
+
+      <mat-form-field class="invisibleElement">
+        <input
+          matInput
+          name="encoded64Image"
+          formControlName="encoded64Image"/>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button 
+          mat-raised-button 
+          type="button" 
+          (click)="resetForm()" 
+          [disabled]="!addGameForm.dirty">
+          Clear
+        </button>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="!addGameForm.valid">
+          Add game
+        </button>
+      </mat-card-actions>      
+    </form>
+  </mat-card-content>
+</mat-card>

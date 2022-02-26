@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { GameList } from '../interfaces/game-list.interface';
 import { Game } from '../interfaces/game.interface';
+import { NewGame } from '../interfaces/new-game.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,12 @@ export class GameserviceService {
     return this.http
       .get<GameList>(`${environment.apiurl.apiurlbase}/games`)
       .pipe(map((res) => res.data));
+  }
+
+  createGame(body: NewGame): Observable<any> {
+    return this.http.post<NewGame>(
+      `${environment.apiurl.apiurlbase}/game`,
+      body
+    );
   }
 }

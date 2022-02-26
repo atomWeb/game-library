@@ -56,7 +56,7 @@ export class JwtInterceptor implements HttpInterceptor {
           // this.router.navigateByUrl('/login');
         }
 
-        return throwError(() => new Error('err'));
+        return throwError(() => err);
       })
     );
     // // if (token && isApiUrl) {

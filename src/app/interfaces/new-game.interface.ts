@@ -1,10 +1,8 @@
-export interface Game {
+export interface NewGame {
   boughtAt: string;
-  image: string;
-  timg: string;
-  platform: string;
-  createAt: string;
-  description: string;
-  id: string;
-  name: string;
+  gameImage: string;  
+  platform: string;  
+  description: string;  
+  gameName: string;
+  encoded64Image: string
 }
