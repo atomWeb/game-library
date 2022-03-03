@@ -22,12 +22,12 @@ mat-toolbar > mat-icon {
 }
 
 mat-toolbar > button mat-icon:hover {
-  transition: transform 0.3s ease;
+  transition: transform 0.1s ease;
   transform: scale(1.4);
 }
 
 mat-toolbar > button mat-icon:not(:hover) {
-  transition: transform 0.3s ease;
+  transition: transform 0.1s ease;
 }
 
 .mat-nav-list .mat-icon {

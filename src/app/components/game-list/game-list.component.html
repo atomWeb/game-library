@@ -1,8 +1,10 @@
 <mat-list>
   <mat-list-item *ngFor="let game of games">
-    <span>
-      <p>{{ game.gname }} / {{ game.description }}</p>
-    </span>
-    <br />
-  </mat-list-item>
+    <img matListAvatar src="{{ game.timg }}" alt="Game avatar">
+    <h3 matLine>{{ game.gname }}</h3>
+    <p matLine>      
+      <span>{{ (game.description.length>20)? (game.description | slice:0:20)+'...':(game.description) }}</span>
+    </p>   
+    <mat-divider></mat-divider> 
+  </mat-list-item>  
 </mat-list>

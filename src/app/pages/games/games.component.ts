@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,18 +11,22 @@ import { GameserviceService } from '../../services/gameservice.service';
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.css'],
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent implements OnInit, AfterViewInit {
+  games$!: Observable<Game[]>;
   ps4Games$!: Observable<Game[]>;
   switchGames$!: Observable<Game[]>;
 
   constructor(private gameService: GameserviceService) {}
 
   ngOnInit(): void {
-    const games$ = this.gameService.getAllGames();
-    this.ps4Games$ = games$.pipe(
+    this.games$ = this.gameService.getAllGames();
+  }
+
+  ngAfterViewInit(): void {
+    this.ps4Games$ = this.games$.pipe(
       map((games) => games.filter((game) => game.platform === 'PS4'))
     );
-    this.switchGames$ = games$.pipe(
+    this.switchGames$ = this.games$.pipe(
       map((games) => games.filter((game) => game.platform === 'NSW'))
     );
   }

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from '@auth0/auth0-angular'
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AuthModule } from '@auth0/auth0-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,16 +18,18 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { GamesComponent } from './pages/games/games.component';
+import { HomeComponent } from './pages/home/home.component';
 import { AddGameComponent } from './pages/add-game/add-game.component';
-import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 import { environment } from '../environments/environment';
 import { GameComponent } from './components/game/game.component';
 import { GameListComponent } from './components/game-list/game-list.component';
@@ -41,17 +44,17 @@ import { JwtInterceptor } from './shared/jwt.iterceptor';
     NavigationComponent,
     FooterComponent,
     GamesComponent,
-    AddGameComponent,
-    AuthNavComponent,
+    AddGameComponent,    
     GameComponent,
     GameListComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,    
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     LayoutModule,
@@ -67,15 +70,18 @@ import { JwtInterceptor } from './shared/jwt.iterceptor';
     MatCardModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatNativeDateModule,
+    MatDialogModule,    
     AuthModule.forRoot({
       ...environment.auth,
-    })
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

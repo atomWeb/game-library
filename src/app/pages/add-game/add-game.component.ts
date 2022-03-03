@@ -53,9 +53,16 @@ export class AddGameComponent implements OnInit {
       // snack bar para mostrar el alta correcta
     });
   }
-  
+
   resetForm() {
     this.image64 = '';
     this.addGameForm.reset();
+    for (const key in this.addGameForm.controls) {
+      // console.log(key);
+      this.addGameForm.get(key)?.clearValidators();
+      this.addGameForm.get(key)?.updateValueAndValidity();
+    }
+    // this.addGameForm.controls['gameName'].clearValidators();
+    // this.addGameForm.controls['gameName'].updateValueAndValidity();
   }
 }
