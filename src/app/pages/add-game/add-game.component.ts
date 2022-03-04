@@ -37,20 +37,24 @@ export class AddGameComponent implements OnInit {
       ],
       encoded64Image: [''],
       description: [''],
+      uid: [''],
     });
   }
 
   onSubmit() {
     const date = new Date(this.addGameForm.value.boughtAt);
+    const userArr = localStorage.getItem('auth-user')?.split("|") || "";
+    const userProfileId = userArr[1];
     this.addGameForm.patchValue({
       encoded64Image: this.image64,
       boughtAt: date.toISOString(),
+      uid: userProfileId,
     });
     console.log(this.addGameForm.value);
     this.gameServ.createGame(this.addGameForm.value).subscribe((resp) => {
       console.log('Resp post add-game ', JSON.stringify(resp));
       this.resetForm();
-      // snack bar para mostrar el alta correcta
+      // snack o dialogo bar para mostrar el alta correcta
     });
   }
 

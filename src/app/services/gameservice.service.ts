@@ -16,15 +16,21 @@ export class GameserviceService {
   constructor(private http: HttpClient) {}
 
   getAllGames(): Observable<Game[]> {
+    const userArr = localStorage.getItem('auth-user')?.split("|") || "";
+    const userProfileId = userArr[1];
     return this.http
-      .get<GameList>(`${environment.apiurl.apiurlbase}/games`)
+      .get<GameList>(`${environment.apiurl.apiurlbase}/games/${userProfileId}`)
+      .pipe(map((res) => res.data));
+  }
+
+  getGame(gameId: string): Observable<Game[]> {
+    return this.http
+      .get<GameList>(`${environment.apiurl.apiurlbase}/game/${gameId}`)
       .pipe(map((res) => res.data));
   }
 
   createGame(body: NewGame): Observable<any> {
     return this.http.post<NewGame>(
-      `${environment.apiurl.apiurlbase}/game`,
-      body
-    );
+      `${environment.apiurl.apiurlbase}/game`, body);
   }
 }
