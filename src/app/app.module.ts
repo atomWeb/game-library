@@ -27,28 +27,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { GamesComponent } from './pages/games/games.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AddGameComponent } from './pages/add-game/add-game.component';
+import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
-import { GameComponent } from './components/game/game.component';
-import { GameListComponent } from './components/game-list/game-list.component';
-import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
-
 import { JwtInterceptor } from './shared/jwt.iterceptor';
+import { NopagefoudComponent } from './nopagefound/nopagefound.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    FooterComponent,
-    GamesComponent,
-    AddGameComponent,    
-    GameComponent,
-    GameListComponent,
-    ImageUploaderComponent,
+    FooterComponent,    
     HomeComponent,
+    NopagefoudComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +63,7 @@ import { JwtInterceptor } from './shared/jwt.iterceptor';
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
-    MatDialogModule,    
+    MatDialogModule,
     AuthModule.forRoot({
       ...environment.auth,
     }),

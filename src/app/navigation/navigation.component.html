@@ -13,7 +13,7 @@
         <mat-icon aria-label="Side nav game lists icon">library_books</mat-icon>
         <span>Games</span>
       </a>
-      <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/add-game">
+      <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/games/add-game">
         <mat-icon aria-label="Side nav add game icon">videogame_asset</mat-icon>
         <span>Add game</span>
       </a>
@@ -38,7 +38,7 @@
       <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
         <button
           mat-icon-button aria-label="logout button"
-          matTooltip="logout"
+          matTooltip="Logout"
           matTooltipClass="tooltip-aplication"
           (click)="auth.logout({ returnTo: document.location.origin })">
           <mat-icon>logout</mat-icon>
@@ -57,7 +57,7 @@
       <ng-template #loggedOut>
         <button
           mat-icon-button aria-label="login button"
-          matTooltip="login"
+          matTooltip="Login"
           matTooltipClass="tooltip-aplication"
           (click)="auth.loginWithRedirect()">
           <mat-icon>login</mat-icon>

@@ -7,11 +7,11 @@ import { Game } from '../../interfaces/game.interface';
 import { GameserviceService } from '../../services/gameservice.service';
 
 @Component({
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css'],
+  selector: 'app-games-home',
+  templateUrl: './games-home.component.html',
+  styleUrls: ['./games-home.component.css'],
 })
-export class GamesComponent implements OnInit, AfterViewInit {
+export class GamesHomeComponent implements OnInit, AfterViewInit {
   games$!: Observable<Game[]>;
   ps4Games$!: Observable<Game[]>;
   switchGames$!: Observable<Game[]>;

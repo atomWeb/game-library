@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ThemePalette } from '@angular/material/core';
-import { delay } from 'rxjs';
 import { SpinnerService } from './services/spinner.service';
 
 @Component({
