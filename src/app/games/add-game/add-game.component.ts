@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-import { GamePlatforms } from '../../interfaces/game-platforms.interface';
-import { GameserviceService } from '../../services/gameservice.service';
+import { GamePlatforms } from '../interfaces/game-platforms.interface';
+import { GameserviceService } from '../services/gameservice.service';
 
 @Component({
   selector: 'app-add-game',

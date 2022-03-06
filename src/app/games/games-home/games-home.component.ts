@@ -3,8 +3,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Game } from '../../interfaces/game.interface';
-import { GameserviceService } from '../../services/gameservice.service';
+import { Game } from '../interfaces/game.interface';
+import { GameserviceService } from '../services/gameservice.service';
 
 @Component({
   selector: 'app-games-home',

@@ -16,8 +16,12 @@
       <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/games/add-game">
         <mat-icon aria-label="Side nav add game icon">videogame_asset</mat-icon>
         <span>Add game</span>
+      </a>      
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLinkActive="item-active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/about">
+        <mat-icon aria-label="Side nav about icon">info</mat-icon>
+        <span>About</span>
       </a>
-      <mat-divider></mat-divider>      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

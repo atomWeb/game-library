@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
 import { JwtInterceptor } from './shared/jwt.iterceptor';
 import { NopagefoudComponent } from './nopagefound/nopagefound.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { NopagefoudComponent } from './nopagefound/nopagefound.component';
     FooterComponent,    
     HomeComponent,
     NopagefoudComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,7 @@ mat-toolbar > mat-icon {
 
 mat-toolbar > button mat-icon:hover {
   transition: transform 0.1s ease;
-  transform: scale(1.4);
+  transform: scale(1.5);
 }
 
 mat-toolbar > button mat-icon:not(:hover) {
@@ -32,7 +32,7 @@ mat-toolbar > button mat-icon:not(:hover) {
 
 .mat-nav-list .mat-icon {
   color: #696969;
-  transform: scale(1.4);
+  transform: scale(1.5);
 }
 
 .mat-nav-list span {
@@ -49,7 +49,7 @@ mat-toolbar > button mat-icon:not(:hover) {
 }
 
 .item-active .mat-icon {
-  color: #2980b9;
+  color: #005ce6;
 }
 
 .spacer {

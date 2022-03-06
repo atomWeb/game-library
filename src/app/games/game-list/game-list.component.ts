@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Game } from '../../interfaces/game.interface';
+import { Game } from '../interfaces/game.interface';
 
 @Component({
   selector: 'app-game-list',
@@ -15,4 +15,9 @@ export class GameListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  showGame(gid: string): void {
+    //(click)="showGame(game.id)" en el html
+    console.log(gid)
+  }
 }

@@ -1,6 +1,9 @@
 <mat-list>
   <mat-list-item *ngFor="let game of games">
-    <img matListAvatar src="{{ game.timg }}" alt="Game avatar">
+    <img 
+      matListAvatar src="{{ game.timg }}" 
+      [routerLink]="[game.id]"      
+      alt="Game avatar">
     <h3 matLine>{{ game.gname }}</h3>
     <p matLine>      
       <span>{{ (game.description.length>20)? (game.description | slice:0:20)+'...':(game.description) }}</span>
